@@ -1,0 +1,34 @@
+*{
+    margin: 0px;
+    box-sizing: border-box;
+}
+.sidebar{
+    padding-top: 30px;
+    position: absolute;
+    left: 0px;
+    background: linear-gradient(45deg, rgb(47, 224, 255), rgb(86, 255, 123));
+    width: 320px;
+    height: 100vh;
+}
+
+.top{
+    position:absolute;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+}
+
+#btn_add{
+    position: absolute;
+    width: 90px;
+    height: 30px;
+    right: 5px;
+    margin: 5px;
+}
+
+#inp_task{
+    position:absolute;
+    margin: 5px;
+    width: calc(90% - 90px);
+    height: 30px;
+}
