@@ -13,7 +13,7 @@ btn_add.onclick = function () {
     return;
   let div2 = document.createElement("div");
   console.log(txt.value);
-  div2.innerHTML = "<h3>" + txt.value + "</h3>";
+  div2.innerHTML = "<h3>" + txt.value + "<button class='del_btn'></button></h3>";
   div2.setAttribute("id", "task" + idCount);
   div2.setAttribute("class", "task");
   idCount++;
