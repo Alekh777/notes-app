@@ -13,7 +13,7 @@ btn_add.onclick = function () {
     return;
   let div2 = document.createElement("div");
   console.log(txt.value);
-  div2.innerHTML = "<h3>" + txt.value + "<button class='del_btn' onclick='del_btn(this)'></button></h3>";
+  div2.innerHTML = "<div class='txt'>" + txt.value + "</div>" + "<div class='del_btn' onclick='del_btn(this)'></div>";
   div2.setAttribute("id", "task" + idCount);
   div2.setAttribute("class", "task");
   idCount++;
@@ -22,6 +22,6 @@ btn_add.onclick = function () {
   txt.value = "";
 };
 function del_btn(ele){
-let toDelDiv = ele.parentNode.parentNode;
+let toDelDiv = ele.parentNode;
 toDelDiv.remove();
 }
