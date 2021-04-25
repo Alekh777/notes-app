@@ -16,12 +16,15 @@ btn_add.onclick = function () {
   div2.innerHTML = "<div class='txt'>" + txt.value + "</div>" + "<div class='del_btn' onclick='del_btn(this)'></div>";
   div2.setAttribute("id", "task" + idCount);
   div2.setAttribute("class", "task");
+  localStorage.setItem("task" + idCount, txt.value);
+  console.log(localStorage.getItem("task" + idCount));
   idCount++;
   let div1 = document.getElementById("div1");
   div1.insertBefore(div2, div1.firstElementChild);
   txt.value = "";
 };
 function del_btn(ele){
+  localStorage.removeItem(ele.parentNode.id);
 let toDelDiv = ele.parentNode;
 toDelDiv.remove();
 }
