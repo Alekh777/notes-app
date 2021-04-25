@@ -81,6 +81,9 @@ body {
   position: relative;
   overflow: hidden;
   padding: 7px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background-color: #7194a549;
 }
 
 .task:hover {
