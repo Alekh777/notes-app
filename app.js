@@ -27,6 +27,7 @@ function loadStoredTasks() {
     "<div class='del_btn' onclick='del_btn(this)'></div>";
   div2.setAttribute("id", "task" + ++idCount);
   div2.setAttribute("class", "task");
+  div2.setAttribute("onclick", "focusTask(this.id);");
   let div1 = document.getElementById("div1");
   div1.insertBefore(div2, div1.firstElementChild);
   txt.value = "";
@@ -44,7 +45,9 @@ btn_add.onclick = function () {
     "<div class='del_btn' onclick='del_btn(this)'></div>";
   div2.setAttribute("id", "task" + ++idCount);
   div2.setAttribute("class", "task");
+  div2.setAttribute("onclick", "focusTask(this.id);");
   localStorage.setItem("task" + idCount, txt.value);
+  localStorage.setItem("content" + idCount, "");
   let div1 = document.getElementById("div1");
   div1.insertBefore(div2, div1.firstElementChild);
   txt.value = "";
@@ -84,9 +87,21 @@ function del(ele) {
     //handling the local storages' keys
     let temp = document.getElementById("task" + (i - 1).toString());
     localStorage.setItem("task" + parseInt(i - 1).toString(), temp.innerText);
+    localStorage.setItem("content" + parseInt(i - 1).toString(), localStorage.getItem('content' + i));
   }
   idCount--;
   console.log(idCount);
   localStorage.removeItem("task" + (idCount + 1).toString());
+  localStorage.removeItem("content" + (idCount + 1).toString());
+  content.value = "";
+  heading.innerText = "Note";
   delAlert.style.display = "none";
+}
+
+function saveIt(){
+  console.log(typeof "content" + ID.slice(4));
+  localStorage.setItem("content" + ID.slice(4), content.value);
+
+  if(ID == "")
+    localStorage.removeItem('content');
 }
