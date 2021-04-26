@@ -195,6 +195,21 @@ body {
   padding: 20px;
 }
 
+#save{
+  position: absolute;
+  right: 10px;
+  top: 10px; 
+  border: none;
+  cursor: pointer;
+  background-color: rgb(0, 160, 147);
+  border-radius: 5px;
+  padding: 3px 10px 3px 10px;
+}
+
+#save:active{
+  background-color: rgb(0, 194, 178);
+}
+
 .notearea h2{
   text-align: center;
   padding-top: 10px;
