@@ -98,6 +98,18 @@ function del(ele) {
   delAlert.style.display = "none";
 }
 
+let ID = "";
+function focusTask(id){
+  console.log("id=",id);
+  document.getElementById('heading').innerText = document.getElementById(id).innerText;
+  let item = localStorage.getItem("content" + id.slice(4));
+  if(item != null)
+    content.value = item;
+  else
+    content.value = "";
+  ID = id;
+}
+
 function saveIt(){
   console.log(typeof "content" + ID.slice(4));
   localStorage.setItem("content" + ID.slice(4), content.value);
