@@ -115,7 +115,6 @@ function saveIt(){
   if(ID.slice(4) == "")
   {
     window.alert('Select a Note to save!');
-    content.value = "";
     return;
   }
   console.log("content" + ID.slice(4));
