@@ -111,9 +111,20 @@ function focusTask(id){
 }
 
 function saveIt(){
-  console.log(typeof "content" + ID.slice(4));
+  console.log(typeof ID.slice(4))
+  if(ID.slice(4) == "")
+  {
+    window.alert('Select a Note to save!');
+    content.value = "";
+    return;
+  }
+  console.log("content" + ID.slice(4));
   localStorage.setItem("content" + ID.slice(4), content.value);
-
-  if(ID == "")
-    localStorage.removeItem('content');
 }
+
+document.addEventListener("keydown", function(e) {
+  if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)  && e.keyCode == 83) {
+    e.preventDefault();
+    saveIt();
+  }
+}, false);
