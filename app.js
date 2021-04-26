@@ -1,6 +1,7 @@
 let idCount = 0;
 let txt = document.getElementById("inp_task");
 
+//Detecting enter key press
 txt.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
     event.preventDefault();
@@ -31,6 +32,8 @@ function loadStoredTasks() {
   txt.value = "";
 }
 
+
+//ADDITION
 btn_add.onclick = function () {
   if (txt.value == "") return;
   let div2 = document.createElement("div");
@@ -48,10 +51,29 @@ btn_add.onclick = function () {
   console.log(idCount);
 };
 
+
+//DELETION
+let element;
+
 function del_btn(ele) {
+  element = ele;
+  delAlert.style.display = "block";
+}
+
+yes.addEventListener("click", function () {
+  console.log(element);
+  del(element);
+  delAlert.style.display = "none";
+});
+
+no.addEventListener("click", function () {
+  delAlert.style.display = "none";
+});
+
+function del(ele) {
   let ID = ele.parentNode.id;
   let idNo = parseInt(ID.slice(4));
-  console.log(ID, idNo);
+  console.log(ID);
   localStorage.removeItem(ID);
   ele.parentNode.remove();
   let i = idNo + 1;
@@ -66,4 +88,5 @@ function del_btn(ele) {
   idCount--;
   console.log(idCount);
   localStorage.removeItem("task" + (idCount + 1).toString());
+  delAlert.style.display = "none";
 }
