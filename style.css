@@ -92,7 +92,6 @@ body {
 
 .task:hover {
   background-color: white;
-  color: black;
 }
 
 .task:hover .txt {
@@ -228,4 +227,9 @@ body {
   background: transparent;
   border: none;
   outline: none;
+}
+
+.focus{
+  background-color: white;
+  color: black;
 }

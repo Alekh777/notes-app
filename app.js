@@ -99,8 +99,24 @@ function del(ele) {
 }
 
 let ID = "";
+let tGlobal = "";
 function focusTask(id){
   console.log("id=",id);
+  if(parseInt(tGlobal.slice(4)) > idCount){
+    console.log(idCount, tGlobal)
+    tGlobal = "";
+  }
+  if(tGlobal != ""){
+    document.getElementById(tGlobal).classList.remove("focus");
+    let txt = document.querySelector("#" + tGlobal + " .txt");
+    console.log(txt);
+    txt.classList.remove("focus");
+  }
+  let t = document.getElementById(id);
+  tGlobal = id;
+  t.classList.add("focus");
+  let txt = document.querySelector("#" + id + " .txt");
+  txt.classList.add("focus");
   document.getElementById('heading').innerText = document.getElementById(id).innerText;
   let item = localStorage.getItem("content" + id.slice(4));
   if(item != null)
