@@ -43,6 +43,7 @@ body {
   height: 40px;
   overflow: hidden;
   margin-bottom: 30px;
+  z-index: 1;
 }
 
 #btn_add {
@@ -81,6 +82,7 @@ body {
 
 .task {
   position: relative;
+  z-index: 2;
   overflow: hidden;
   padding: 7px;
   margin-bottom: 5px;
@@ -88,6 +90,18 @@ body {
   background-color: #7194a549;
   font-weight: 600;
   font-size: 22px;
+  animation: slide-down 0.17s ease-in-out 1 normal;
+}
+
+@keyframes slide-down{
+  from{
+    transform: translateY(-25%);
+    opacity: 0;
+  }
+  to{
+    transform: translateY(0%);
+    opacity: 100%;
+  }
 }
 
 .task:hover {
@@ -135,7 +149,7 @@ body {
   width: 100%;
   height: 100%;
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   background-color: rgba(0, 0, 0, 0.6);
 }
 
