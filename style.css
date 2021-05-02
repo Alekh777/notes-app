@@ -90,17 +90,19 @@ body {
   background-color: #7194a549;
   font-weight: 600;
   font-size: 22px;
-  animation: slide-down 0.17s ease-in-out 1 normal;
+  animation: slide-down 0.3s ease-in-out 1 normal;
 }
 
 @keyframes slide-down{
   from{
-    transform: translateY(-25%);
+    height: 0;
+    padding: 0;
     opacity: 0;
   }
   to{
-    transform: translateY(0%);
+    height: 79.6px;
     opacity: 100%;
+    padding: 7px;
   }
 }
 
