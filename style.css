@@ -249,3 +249,21 @@ body {
   background-color: white;
   color: black;
 }
+
+
+.deleteAnimation{
+  animation: delete-slide 0.3s ease-in-out;
+}
+
+@keyframes delete-slide{
+  from{
+    height: 79.6px;
+    padding: 7px;
+    opacity: 100%;
+  }
+  to{
+    height: 0px;
+    opacity: 0%;
+    padding: 0;
+  }
+}

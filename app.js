@@ -6,6 +6,7 @@ txt.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
     event.preventDefault();
     document.getElementById("btn_add").click();
+    console.log('added')
   }
 });
 
@@ -31,6 +32,7 @@ function loadStoredTasks() {
   let div1 = document.getElementById("div1");
   div1.insertBefore(div2, div1.firstElementChild);
   txt.value = "";
+  console.log(idCount);
 }
 
 
@@ -64,8 +66,8 @@ function del_btn(ele) {
 }
 
 yes.addEventListener("click", function () {
-  console.log(element);
-  del(element);
+  deleteAnimation(element);
+  setTimeout(()=>{del(element);}, 300);
   delAlert.style.display = "none";
 });
 
@@ -73,10 +75,18 @@ no.addEventListener("click", function () {
   delAlert.style.display = "none";
 });
 
+function deleteAnimation(ele){
+  let ID = ele.parentNode.id;
+  let d = document.getElementById(ID);
+  d.setAttribute('class', 'deleteAnimation');
+  let t = d.getElementsByClassName('txt');
+  t[0].setAttribute('class', 'deleteAnimation');
+}
+
 function del(ele) {
   let ID = ele.parentNode.id;
   let idNo = parseInt(ID.slice(4));
-  console.log(ID);
+  console.log(idNo, ele.parentNode);
   localStorage.removeItem(ID);
   ele.parentNode.remove();
   let i = idNo + 1;
@@ -90,26 +100,24 @@ function del(ele) {
     localStorage.setItem("content" + parseInt(i - 1).toString(), localStorage.getItem('content' + i));
   }
   idCount--;
-  console.log(idCount);
   localStorage.removeItem("task" + (idCount + 1).toString());
   localStorage.removeItem("content" + (idCount + 1).toString());
   content.value = "";
   heading.innerText = "Note";
   delAlert.style.display = "none";
+  console.log(idCount);
 }
 
 let ID = "";
 let tGlobal = "";
 function focusTask(id){
-  console.log("id=",id);
+  console.log(id);
   if(parseInt(tGlobal.slice(4)) > idCount){
-    console.log(idCount, tGlobal)
     tGlobal = "";
   }
   if(tGlobal != ""){
     document.getElementById(tGlobal).classList.remove("focus");
     let txt = document.querySelector("#" + tGlobal + " .txt");
-    console.log(txt);
     txt.classList.remove("focus");
   }
   let t = document.getElementById(id);
@@ -127,13 +135,11 @@ function focusTask(id){
 }
 
 function saveIt(){
-  console.log(typeof ID.slice(4))
   if(ID.slice(4) == "")
   {
     window.alert('Select a Note to save!');
     return;
   }
-  console.log("content" + ID.slice(4));
   localStorage.setItem("content" + ID.slice(4), content.value);
 }
 
@@ -141,5 +147,6 @@ document.addEventListener("keydown", function(e) {
   if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)  && e.keyCode == 83) {
     e.preventDefault();
     saveIt();
+    console.log('saved')
   }
 }, false);
